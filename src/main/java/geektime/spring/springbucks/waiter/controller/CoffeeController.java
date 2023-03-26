@@ -3,6 +3,7 @@ package geektime.spring.springbucks.waiter.controller;
 import geektime.spring.springbucks.waiter.controller.request.NewCoffeeRequest;
 import geektime.spring.springbucks.waiter.model.Coffee;
 import geektime.spring.springbucks.waiter.service.CoffeeService;
+import geektime.spring.springbucks.waiter.service.SpringBeanTest;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
@@ -13,13 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
@@ -37,6 +32,15 @@ public class CoffeeController {
     @Autowired
     private CoffeeService coffeeService;
 
+    @Autowired
+    public SpringBeanTest springBeanTest;
+
+    @PostMapping(path = "/testSpringBean")
+    public void testSpringBean() {
+        springBeanTest.springBeanTest();
+    }
+
+
     @PostMapping(path = "/addForm", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     @Transactional(rollbackFor = Exception.class)
@@ -49,7 +53,7 @@ public class CoffeeController {
         return coffee;
     }
 
-    @PostMapping(path = "/deleteAll")
+    @GetMapping(path = "/deleteAll")
     @ResponseStatus(HttpStatus.OK)
     @Transactional(rollbackFor = Exception.class)
     public void deleteAllCoffee() throws Exception {

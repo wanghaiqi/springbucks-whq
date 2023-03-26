@@ -9,6 +9,7 @@
 
     <!-- 扫描包 -->
     <context:component-scan base-package="geektime.spring.springbucks.waiter" />
+    <bean id="springBeanController" class="geektime.spring.springbucks.waiter.controller.SpringBeanController"/>
 
     <bean id="springBeanTest" class="geektime.spring.springbucks.waiter.service.SpringBeanTestImpl"/>
 

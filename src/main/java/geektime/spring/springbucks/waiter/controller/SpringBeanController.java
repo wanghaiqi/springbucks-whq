@@ -12,6 +12,8 @@ import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,16 +26,16 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-@RestController
 @RequestMapping("/springBean")
 @Slf4j
+@Controller
 public class SpringBeanController {
 
     @Autowired
     public SpringBeanTest springBeanTest;
 
-    @PostMapping(path = "/getAll")
-    public void getAll() {
+    @GetMapping(path = "/testSpringBean")
+    public void testSpringBean() {
          springBeanTest.springBeanTest();
     }
 
