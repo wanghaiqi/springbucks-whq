@@ -1,4 +1,4 @@
-package geektime.spring.springbucks.waiter.controller.request;
+package geektime.spring.springbucks.waiter.controller;
 
 import geektime.spring.springbucks.waiter.model.Coffee;
 import geektime.spring.springbucks.waiter.service.CoffeeService;
@@ -28,8 +28,9 @@ import java.util.List;
 @RequestMapping("/springBean")
 @Slf4j
 public class SpringBeanController {
+
     @Autowired
-    private SpringBeanTest springBeanTest;
+    public SpringBeanTest springBeanTest;
 
     @PostMapping(path = "/getAll")
     public void getAll() {
